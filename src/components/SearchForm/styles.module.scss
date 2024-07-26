@@ -1,0 +1,20 @@
+.form {
+  background-color:  #6600FF;
+  margin: 0 auto;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+  width: 100vw;
+  max-width: 1200px;
+
+  &__input {
+    width: 90%;
+    border: 0;
+  }
+
+  &__button {
+    background: url('../../images/search.png') center no-repeat;
+    padding: 23px 20px;
+    border: 0;
+    margin-left: 20px;
+  }
+}
