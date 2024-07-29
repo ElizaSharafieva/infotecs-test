@@ -1,20 +1,42 @@
 .form {
+  display: flex;
+  gap: 10px;
   background-color:  #6600FF;
   margin: 0 auto;
   border-radius: 10px 10px 0 0;
   padding: 10px;
   width: 100vw;
+  min-width: 410px;
   max-width: 1200px;
+  align-items: center;
+
+  &__inputContainer {
+    position: relative;
+    width: 100%;
+  }
 
   &__input {
-    width: 90%;
-    border: 0;
+    width: 100%;
+    caret-color: #6600FF;
+    padding: 8px;
+    border-radius: 10px;
   }
 
   &__button {
     background: url('../../images/search.png') center no-repeat;
     padding: 23px 20px;
     border: 0;
-    margin-left: 20px;
+    cursor: pointer;
+
+    &_del {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+    }
   }
 }

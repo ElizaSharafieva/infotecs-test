@@ -59,6 +59,6 @@ Popup.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsPopupOpen: PropTypes.func.isRequired,
   setSelectedUser: PropTypes.func.isRequired,
-};
+}
 
 export default Popup

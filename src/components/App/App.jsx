@@ -7,7 +7,8 @@ import api from '../../utils/api'
 
 function App() {
 
-  const [users, setUsers] = useState([])
+  const [allUsers, setAllUsers] = useState([])
+  const [filteredUsers, setFilteredUsers] = useState([])
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState(null)
 
@@ -22,15 +23,23 @@ function App() {
 
   useEffect (() => {
     fetchUsers()
-      .then(data => setUsers(data))
+      .then(data => {
+        setAllUsers(data),
+        setFilteredUsers(data)
+      })
       .catch(err => console.log(err))
   }, [])
 
   return (
     <main className={styles.main}>
-      <SearchForm />
+      <SearchForm 
+        allUsers={allUsers}
+        setFilteredUsers={setFilteredUsers}
+      />
       <UserTable 
-        users={users}
+        allUsers={allUsers}
+        filteredUsers={filteredUsers}
+        setFilteredUsers={setFilteredUsers}
         setIsPopupOpen={setIsPopupOpen}
         setSelectedUser={setSelectedUser}
       />

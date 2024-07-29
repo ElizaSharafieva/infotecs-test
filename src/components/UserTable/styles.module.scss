@@ -11,6 +11,36 @@
     background-color: #d5d3d3;
   }
 
+  &__headerContainer {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    background: url('../../images/sort.svg') center no-repeat;
+    background-size: 25px;
+    padding: 13px;
+    border: 0;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 500ms ease-out;
+    }
+
+    &_asc {
+      background: url('../../images/arrow-up.svg') center no-repeat;
+      background-size: 19px;
+    }
+
+    &_desc {
+      background: url('../../images/arrow-down.svg') center no-repeat;
+      background-size: 19px;
+    }
+  }
+
   &__row:hover {
     cursor: pointer;
     background-color: #787676;
@@ -21,6 +51,10 @@
     text-align: center;
     padding: 3px 10px;
     border-bottom: 2px solid #d5d3d3;
+
+    &_error {
+      text-align: center;
+    }
   }
 }
 
