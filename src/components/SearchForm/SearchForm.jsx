@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import api from '../../utils/api'
 
@@ -95,6 +96,24 @@ const SearchForm = ( {allUsers, setFilteredUsers} ) => {
       <button className={styles.form__button} onClick={handleSearchUser}></button>
     </form>
   )
+}
+
+SearchForm.propTypes = {
+  allUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      age: PropTypes.number.isRequired,
+      gender: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      address: PropTypes.shape({
+        city: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+      }).isRequired,
+    })
+  ).isRequired,
+  setFilteredUsers: PropTypes.func.isRequired,
 }
 
 export default SearchForm

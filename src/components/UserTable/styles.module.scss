@@ -8,11 +8,18 @@
   max-width: 1200px;
 
   &__subtitle {
+    border-right: 2px solid #6600FF;
+    position: relative;
     background-color: #d5d3d3;
+
+    &:last-child {
+      border: 0;
+    }
   }
 
   &__headerContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
     justify-content: center;
     align-items: center;
@@ -56,5 +63,14 @@
       text-align: center;
     }
   }
-}
 
+  &__resizer {
+    position: absolute;
+    right: -3px;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    cursor: col-resize;
+    z-index: 1;
+  }
+}

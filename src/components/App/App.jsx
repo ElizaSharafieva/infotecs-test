@@ -24,7 +24,7 @@ function App() {
   useEffect (() => {
     fetchUsers()
       .then(data => {
-        setAllUsers(data),
+        setAllUsers(data)
         setFilteredUsers(data)
       })
       .catch(err => console.log(err))

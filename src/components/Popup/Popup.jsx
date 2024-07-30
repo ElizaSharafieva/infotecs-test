@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
-import useClosePopup from '../hooks/useClosePopup'
+import useClosePopup from '../../hooks/useClosePopup'
 
 const Popup = (props) => {
 

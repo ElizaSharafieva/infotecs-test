@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
+import useResizableColumns from '../../hooks/useResizableColumns'
 
 const UserTable = (props) => {
 
@@ -13,6 +14,8 @@ const UserTable = (props) => {
   } = props
 
   const [sortConfig, setSortConfig] = useState({ key: 'name', direction: null})
+  const tableRef = useRef(null)
+  useResizableColumns(tableRef, styles)
 
   function handleClick(user) {
     setIsPopupOpen(true)
@@ -48,6 +51,7 @@ const UserTable = (props) => {
       setFilteredUsers(allUsers)
     }
   }
+  
   const columns = [
     { key: 'name', header: 'ФИО'},
     { key: 'age', header: 'Возраст'},
@@ -57,7 +61,7 @@ const UserTable = (props) => {
   ]
 
   return (
-    <table className={styles.table}>
+    <table className={styles.table} ref={tableRef}>
       <thead>
         <tr>
           {
@@ -102,6 +106,20 @@ const UserTable = (props) => {
 }
 
 UserTable.propTypes = {
+  allUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      age: PropTypes.number.isRequired,
+      gender: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      address: PropTypes.shape({
+        city: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+      }).isRequired,
+    })
+  ).isRequired,
   filteredUsers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -116,6 +134,7 @@ UserTable.propTypes = {
       }).isRequired,
     })
   ).isRequired,
+  setFilteredUsers: PropTypes.func.isRequired,
   setIsPopupOpen: PropTypes.func.isRequired,
   setSelectedUser: PropTypes.func.isRequired,
 }
